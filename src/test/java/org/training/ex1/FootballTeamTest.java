@@ -8,33 +8,86 @@ import org.junit.runner.RunWith;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
-
-import static org.fest.assertions.Assertions.*;
+import static org.fest.assertions.Assertions.assertThat;
 
 @RunWith(JUnitParamsRunner.class)
 public class FootballTeamTest {
 
-    public static Collection testData() {
+    private static final int VALID_GAMES_WON = 10;
+    private static final int INVALID_GAMES_WON = -1;
+
+    public static Collection gamesWonTestData() {
         return Arrays.asList(new Object[][]{
-                {4, 5, -1},
-                {5, 5, 0},
+                {0, 0, '='}, //testing edge cases with smallest increment
+                {0, 1, '<'},
+                {1, 0, '>'},
+                {50, 99, '<'}, //trying cases with big numbers
+                {99, 50, '>'},
+                {99, 99, '='}
         });
     }
 
-    @Parameters(method = "testData")
+    @Test(expected = IllegalArgumentException.class)
+    public void createInstanceWithInvalidGamesWon() {
+
+        new FootballTeam(INVALID_GAMES_WON);
+
+    }
+
     @Test
-    public void compareTest(int a, int b, int testResult) {
+    public void createValidFootballTeamInstance() {
+
+        FootballTeam team = new FootballTeam(VALID_GAMES_WON);
+
+        assertThat(team.getGamesWon()).isEqualTo(VALID_GAMES_WON);
+
+    }
+
+    @Parameters(method = "gamesWonTestData")
+    @Test
+    public void compareTest(int team1GamesWon, int team2GamesWon, char expectedResult) {
+        FootballTeam team1 = createFootballTeam(team1GamesWon);
+        FootballTeam team2 = createFootballTeam(team2GamesWon);
+
+        int comparisonResult = team1.compareTo(team2);
+
+        assertResultWithExpectedValue(comparisonResult, expectedResult);
+    }
+
+    @Test
+    public void compareWithNullParameter() {
+        FootballTeam team = createFootballTeam(VALID_GAMES_WON);
+        FootballTeam nullTeam = null;
+
+        int comparisonResult = team.compareTo(nullTeam);
+
+        assertThat(comparisonResult).isGreaterThan(0);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void setInvalidGamesForFootballTeam() {
+
+        createFootballTeam(INVALID_GAMES_WON);
+
+    }
+
+    private static FootballTeam createFootballTeam(int gamesWon) {
         FootballTeam team = new FootballTeam();
-        team.setGamesWon(a);
+        team.setGamesWon(gamesWon);
+        return team;
+    }
 
-        FootballTeam team2 = new FootballTeam();
-        team2.setGamesWon(b);
-
-        int result = team.compareTo(team2);
-
-//        assertTrue(result > 0);
-        assertThat(result).isEqualTo(testResult);
+    private static void assertResultWithExpectedValue(int result, char operator) {
+        switch (operator) {
+            case '>':
+                assertThat(result).isGreaterThan(0);
+                break;
+            case '<':
+                assertThat(result).isLessThan(0);
+                break;
+            case '=':
+            default:
+                assertThat(result).isEqualTo(0);
+        }
     }
 }
