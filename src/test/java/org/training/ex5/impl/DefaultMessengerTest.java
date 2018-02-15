@@ -2,15 +2,11 @@ package org.training.ex5.impl;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.training.ex5.MailServer;
 import org.training.ex5.TemplateEngine;
 import org.training.ex5.dto.Client;
 import org.training.ex5.dto.Template;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class DefaultMessengerTest {
@@ -38,13 +34,12 @@ public class DefaultMessengerTest {
     }
 
     @Test
-    public void sendMessage() {
+    public void shouldSendEmail() {
 
         when(msgClient.getEmailAddr()).thenReturn(CLIENT_EMAIL);
 
         messenger.sendMessage(msgClient, msgTemplate);
 
-        verify(templateEngine).prepareMessage(msgTemplate, msgClient);
         verify(mailServer).send(CLIENT_EMAIL, MSG_CONTENT);
     }
 }
