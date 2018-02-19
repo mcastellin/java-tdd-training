@@ -22,7 +22,7 @@ public class DefaultMessengerTest {
     private static final String CLIENT_EMAIL = "someemail@thecompany.com";
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         msgTemplate = mock(Template.class);
         msgClient = mock(Client.class);
 
