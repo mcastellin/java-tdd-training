@@ -1,7 +1,5 @@
 package org.training.ex4;
 
-import jdk.nashorn.internal.runtime.arrays.ArrayIndex;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
