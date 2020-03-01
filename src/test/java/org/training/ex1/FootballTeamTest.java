@@ -10,6 +10,19 @@ import java.util.Collection;
 
 import static org.fest.assertions.Assertions.assertThat;
 
+/**
+ * The {@code FootballTeamTest} class should provide the unit testing for its SUT {@link FootballTeam}.
+ * <p>
+ * 1. The {@link FootballTeam} class has one attribute {@code gamesWon}. Verify the {@code setGamesWon} method
+ * with different inputs. It's a good idea to include one happy path test case, a test for edge cases and test for
+ * failing scenarios.
+ * <p>
+ * 2. The {@link FootballTeam} class implements the {@link Comparable} interface, so its test class should provide unit
+ * testing for the {@code compareTo} method.
+ *
+ * @author Manuel Castellin
+ * @since 2020-03-01
+ */
 @RunWith(JUnitParamsRunner.class)
 public class FootballTeamTest {
 
