@@ -1,4 +1,4 @@
-name: Java TDD Training CI
+name: CI
 
 on: [push]
 
