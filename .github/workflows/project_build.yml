@@ -18,6 +18,6 @@ jobs:
     - name: Perform unit testing
       run: mvn test
     - name: Upload coverage report
-      env:
-        CODECOV_TOKEN: ${{ secrects.CODECOV_TOKEN }}
       run: bash <(curl -s https://codecov.io/bash) 
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
