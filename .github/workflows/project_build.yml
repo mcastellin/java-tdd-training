@@ -15,5 +15,9 @@ jobs:
         java-version: 11
     - name: Build with Maven
       run: mvn compile
-    - name: Perform Unit Testing
+    - name: Perform unit testing
       run: mvn test
+    - name: Upload coverage report
+      with:
+        CODECOV_TOKEN: ${{ CODECOV_TOKEN }}
+      run: bash <(curl -s https://codecov.io/bash) 
