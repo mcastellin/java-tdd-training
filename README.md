@@ -1,4 +1,4 @@
-# java-tdd-training ![Java TDD Training CI](https://github.com/mcastellin/java-tdd-training/workflows/Java%20TDD%20Training%20CI/badge.svg)
+# java-tdd-training ![CI](https://github.com/mcastellin/java-tdd-training/workflows/Java%20TDD%20Training%20CI/badge.svg)
 java-tdd-training is a project for java developers to practice TDD step by step.
 If you are approaching TDD for the first time, you can start progressing from example 
 number one onwards. 
