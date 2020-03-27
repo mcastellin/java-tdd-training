@@ -35,3 +35,7 @@ From the project home directory run `mvn test` command. Test results will print 
 
 # License
 This project is released under the [MIT License](LICENSE.md)
+
+# Additional
+
+This is a test description that needs to be squashed together

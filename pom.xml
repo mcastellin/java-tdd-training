@@ -83,4 +83,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <!-- This is just a comment for testing purposes -->
 </project>
